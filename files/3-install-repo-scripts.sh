@@ -6,7 +6,7 @@
 
 # Variables
 REPO="https://github.com/guarddog-dev"
-REPONAME="VMware_Photon_OVA"
+REPONAME="VMware_Photon_TKG_OVA"
 REPOFOLDER="post-deploy-scripts"
 
 #Download Repo Folder
