@@ -1,13 +1,13 @@
-## OVA Appliance for Tanzu Community Edition with Packer config based on PhotonOS
+## OVA Appliance for Tanzu Kubernetes Grid with Packer config based on PhotonOS
 
 #### Framework from this project came from William Lam's Harbor project. You can find it here:
 https://github.com/lamw/harbor-appliance
 
 ## Summary
-This project provides Hashicorp Packer code that allows you to create a VMware Virtual Appliance (OVA). The OVA is based on PhotonOS and includes Docker, Tanzu Community Edition (TCE), some OS hardening, automation for learning/standing up TCE, automation for dynamic tools installs, etc..
+This project provides Hashicorp Packer code that allows you to create a VMware Virtual Appliance (OVA). The OVA is based on PhotonOS and includes Docker, Tanzu Kubernetes Grid (TKG), Kubernetes in Docker (KinD), some OS hardening, automation for learning/standing up TKG and KinD clusters, automation for dynamic tools installs, etc..
 
 ## Click below to download the OVA:
-https://github.com/guarddog-dev/VMware_Photon_OVA/tree/main/output-vmware-iso
+https://github.com/guarddog-dev/VMware_Photon_TKG_OVA/tree/main/output-vmware-iso
 
 ## Prior to first run:
 #### Due to requirements, it is recommended to build this OVA from a Ubuntu Linux desktop with a GUI.
