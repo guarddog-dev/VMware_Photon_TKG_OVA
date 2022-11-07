@@ -165,33 +165,6 @@ done
 echo "   $PNAME $CSTATUS"
 sleep 20s
 
-<<comment
-## Install EMBY
-echo "   Adding helm repo k8s-at-home for Emby deployment ..."
-helm repo add k8s-at-home https://k8s-at-home.com/charts/
-helm repo update
-
-# Create Namespace EMBY
-echo "   Creating Namespace emby ..."
-kubectl create namespace emby
-
-# Get Timezone from OVA
-TZ=$(timedatectl status | grep "Time zone" | cut -d ":" -f 2 | cut -d " " -f 2)
-echo "   System Timezone is $TZ ..."
-
-# Install EMBY
-echo "   Using helm to install Emby ..."
-helm install emby k8s-at-home/emby \
-  --namespace emby \
-  --replace \
-  --set env.TZ="${TZ}" \
-  --set persistence.config.enabled="true" \
-  --set persistence.config.size="20Gi" \
-  --set persistence.config.retain="true" \
-  --set hostNetwork="true" \
-  --set image.tag="latest"
-comment
-
 # Get Timezone from OVA
 export TZ=$(timedatectl status | grep "Time zone" | cut -d ":" -f 2 | cut -d " " -f 2)
 echo "   System Timezone is $TZ ..."
@@ -359,38 +332,10 @@ echo "   Pod $EMBYPOD is now ready ..."
 # Echo pod info
 echo "   Info on new pod includes:"
 kubectl get pods -n emby -o wide
-kubectl get pvc -n emby
+kubectl get pv,pvc -n emby
 kubectl get services -n emby -o wide
 #kubectl logs $(EMBYPOD) -n emby --all-containers
 echo " "
-
-<<comment
-# Create EMBY ingress rules
-echo "   Creating Emby ingress rules ..."
-cat <<EOF > emby-ingress.yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: emby-web
-  namespace: emby
-spec:
-  rules:
-  - host: $EMBY_FQDN
-    http:
-      paths:
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: emby
-            port:
-              number: 8096
-EOF
-
-# Apply EMBY ingress rules
-echo "   Applying EMBY ingress rules ..."
-kubectl apply -f emby-ingress.yaml
-comment
 
 kubectl get all,ingress -n emby
 
