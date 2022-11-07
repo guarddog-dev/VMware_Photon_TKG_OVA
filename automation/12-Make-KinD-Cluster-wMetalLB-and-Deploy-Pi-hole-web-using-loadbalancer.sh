@@ -103,6 +103,13 @@ echo "   Kubernetes Cluster $CLUSTER_NAME Status - Ready"
 kubectl get nodes,po -A
 sleep 20s
 
+#Open Ports
+echo -e "   Opening Ingress Ports..."
+sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+#sudo iptables -I INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
+sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+sudo iptables-save > /etc/systemd/scripts/ip4save
+
 ## Install MetalLB (load-balancer)
 echo "   Setting up MetalLb Load-balancer ..."
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v${METALLBVERSION}/manifests/namespace.yaml
