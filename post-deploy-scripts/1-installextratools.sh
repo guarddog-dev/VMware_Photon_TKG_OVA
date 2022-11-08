@@ -209,7 +209,7 @@ curl -Lso pinniped https://get.pinniped.dev/v0.19.0/pinniped-cli-linux-amd64 \
   && sudo mv pinniped /usr/local/bin/pinniped
 
 #Install fluxcd
-echo "   Installing fluxcd ..."
+echo "   Installing flux-cli ..."
 curl -s https://fluxcd.io/install.sh | sudo bash > /dev/null 2>&1
 
 #Remove Utilities
