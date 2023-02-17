@@ -43,7 +43,7 @@ Example: 10.20.0.201
             <Description>DNS Server (comma seperated)</Description>
         </Property>
         <Property ovf:key="guestinfo.domain" ovf:type="string" ovf:userConfigurable="true" ovf:value="guarddog.lab" ovf:required="true">
-            <Label>DNS Searh Domain(s)</Label>
+            <Label>DNS Search Domain(s)</Label>
             <Description>DNS Domain</Description>
         </Property>
       <Category>Syslog</Category>
@@ -84,7 +84,7 @@ fully secure installation.
         </Property>
       <Category>Automation</Category>
         <Property ovf:key="guestinfo.automation" ovf:qualifiers="ValueMap{SCRIPTSLISTVAR}" ovf:type="string" ovf:userConfigurable="true" ovf:value="FIRSTSCRIPTVAR" ovf:required="true">
-        <Label>Tanzu Community Edition Automation</Label>
+        <Label>Kubernetes Automation</Label>
           <Description>Select the automation task that is right for you.</Description>
         </Property>
     </ProductSection>
